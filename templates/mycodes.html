@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    MyCodes
+{% endblock %}
+
+{% block main %}
+<style>
+body {
+    background-image: url(https://images.unsplash.com/photo-1488554378835-f7acf46e6c98?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1051&q=80);
+}
+</style>
+    <form action="/mycodes" method="post" class="display_and_delete">
+        <div class="form-group">
+            <select class="form-control" name="codes">
+                <option disabled selected value="">Select QR code</option>
+                    <!--the contents of this for loop should be a list of my qr codes. coming from the database.-->
+                    {% for cod in codes %}
+                        <option>{{ cod.codename }}</option>
+                    {% endfor %}
+            </select>
+        </div>
+        <!--upon submission I should show the correct code and hide the bar form.-->
+        <button class="btn btn-primary" type="submit">Display</button>
+    </form>
+{% endblock %}

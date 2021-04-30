@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete
+{% endblock %}
+
+{% block main %}
+
+
+<style>
+body {
+    background-image: url(https://images.unsplash.com/photo-1488554378835-f7acf46e6c98?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1051&q=80);
+}
+</style>
+    <form action="/delete" method="post" class="display_and_delete">
+        <div class="form-group">
+            <select class="form-control" name="delete">
+                <option disabled selected value="">QR to Delete</option>
+                    <!--the contents of this for loop should be a lsit of my qr codes. coming from the database.-->
+                    {% for cod in codes %}
+                        <option>{{ cod.codename }}</option>
+                    {% endfor %}
+            </select>
+        </div>
+        <!--Upon submission I should delete the qr code from my database!-->
+        <button class="btn btn-primary" type="submit">Delete</button>
+    </form>
+{% endblock %}
